@@ -1,12 +1,4 @@
-# RKR
-# The backbone for Rival Kingdoms Reloaded
-
-Hello all,
-
-This is the backbone for the server of Rival Kingdoms Reloaded.
-
-This is the official repo for the plugin under nbrandwine (Stryker_)
-
-If you would like to join our website and/or server, visit rk-reloaded.enjin.com
-
-Also Remo is gay 
+# Rival Kingdoms Reloaded (RKR)
+-- This plugin is the backbone of the server Rival Kingdoms Reloaded.
+-- This is the official plugin and git source for the plugin.
+-- It is (originally) developed by Zxios, Nbrandwine, and RJSamuel.
