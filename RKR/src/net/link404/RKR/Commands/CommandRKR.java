@@ -26,7 +26,6 @@ public class CommandRKR implements CommandExecutor
 										// Fix this command to be something useful.
 										p.sendMessage(ChatColor.GREEN + "Hello, " + p.getName() + "!");
 									}
-								return true; 
 								}
 								else if(args[0].equalsIgnoreCase("set"))
 								{
@@ -38,7 +37,6 @@ public class CommandRKR implements CommandExecutor
 										// Store values and alert user of such actions.
 										p.sendMessage(ChatColor.GREEN + "Hello, " + p.getName() + "! You have reached 'rkr set'.");
 									}
-								return true;
 								}
 							 }
 							else
