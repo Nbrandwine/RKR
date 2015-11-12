@@ -1,13 +1,26 @@
- name: RKR
- version: 1.0.0
- description: Rival Kingdoms Reloaded Central Infrastructure Plugin
- author: Stryker_
- authors: [EUFlux, Zxios] 
+name: RKR
+version: 1.0.0
+description: Rival Kingdoms Reloaded Central Infrastructure Plugin
+author: Stryker_
+authors: [EUFlux, Zxios] 
  
- main: net.link404.RKR.Main
- database: false
+main: net.link404.RKR.Main
+database: false
  
- commands:
-   rkr:
-     description: Basic command to RKR.
-     permission: rkr.use
+commands:
+  rkr:
+    description: Basic command to RKR. Displays available commands.
+    permission: rkr.use
+    usage: /rkr
+  "rkr help":
+    description: Displays available time.
+    permission: rkr.use
+    usage: /rkr
+  "rkr set":
+    description: Sets a flag for a team.
+    permission: rkr.use
+    usage: /rkr
+  "rkr hello":
+    description: Debug command. Tests commands status.
+    permission: rkr.use
+    usage: /rkr hello

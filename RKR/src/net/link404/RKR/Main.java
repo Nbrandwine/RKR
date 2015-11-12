@@ -15,6 +15,9 @@ public class Main extends JavaPlugin
 	{
 		plugin = this;
 		this.getCommand("rkr").setExecutor(new CommandRKR());
+		this.getCommand("rkr help").setExecutor(new CommandRKR());
+		this.getCommand("rkr hello").setExecutor(new CommandRKR());
+		this.getCommand("rkr set").setExecutor(new CommandRKR());		
 	}
 	
 	@Override

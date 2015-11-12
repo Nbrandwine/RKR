@@ -16,9 +16,9 @@ public class CommandRKR implements CommandExecutor
 						
 						if (commandLabel.equalsIgnoreCase("rkr")) // Base Command
 						{
-							if(args.length >= 1)
+							if(args.length > 0)
 							{
-								if(args[0] == "hello")
+								if(args[0].equalsIgnoreCase("hello"))
 								{
 									if(p.hasPermission("rkr.rename-me") || p.isOp())
 									{
@@ -28,7 +28,7 @@ public class CommandRKR implements CommandExecutor
 									}
 								return true; 
 								}
-								else if(args[0] == "set")
+								else if(args[0].equalsIgnoreCase("set"))
 								{
 									if(p.hasPermission("rkr.set") || p.isOp())
 									{
@@ -43,7 +43,7 @@ public class CommandRKR implements CommandExecutor
 								else
 								{
 										// The command that basically says "You fucked up with your commands.".
-									p.sendMessage(ChatColor.DARK_AQUA + "-=====<" + ChatColor.AQUA + "Rival Kingdoms Reloaded" + ChatColor.DARK_AQUA + " >=====-");
+									p.sendMessage(ChatColor.DARK_AQUA + "-=====<" + ChatColor.AQUA + "Rival Kingdoms Reloaded" + ChatColor.DARK_AQUA + ">=====-");
 									p.sendMessage(ChatColor.AQUA + "" + ChatColor.DARK_AQUA + "Rival Kingdoms Reloaded");
 									p.sendMessage(ChatColor.AQUA + "" + ChatColor.DARK_AQUA + "Version 1.0 (DEV)");
 									p.sendMessage(ChatColor.AQUA + "" + ChatColor.DARK_AQUA + "Rival Kingdoms Reloaded is a plugin designed to provide infrastructure for the server.");
