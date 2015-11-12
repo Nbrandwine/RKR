@@ -38,7 +38,7 @@ public class CommandRKR implements CommandExecutor
 										p.sendMessage(ChatColor.GREEN + "Hello, " + p.getName() + "! You have reached 'rkr set'.");
 									}
 								}
-							 }
+							}
 							else
 							{
 									// The command that basically says "You fucked up with your commands.".
@@ -51,7 +51,7 @@ public class CommandRKR implements CommandExecutor
 								p.sendMessage(ChatColor.AQUA + "- " + ChatColor.DARK_AQUA + "EUFlux");
 								p.sendMessage(ChatColor.AQUA + "- " + ChatColor.DARK_AQUA + "Zxios");
 								p.sendMessage(ChatColor.AQUA + "" + ChatColor.DARK_AQUA + "This plugin is for administrators only.");
-							return true; }
+							}
 						}
 					}
 

@@ -51,6 +51,7 @@ public class $ListenerTeamBalance implements Listener
                                       p.sendMessage(ChatColor.BLUE + "You have been drafted into blue team! You may opt-out of this team by requesting a team-change in the forums.");
                                       mp.setTitle("Recruit");
                                       Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "spawn " + mp.getName() + " blue");
+                                      Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "manuadd " + mp.getName() + "blue");
                                       flg = true;
                               } else if(b > a) // blue > red
                               {
@@ -58,6 +59,7 @@ public class $ListenerTeamBalance implements Listener
                                  p.sendMessage(ChatColor.RED + "You have been drafted into red team! You may opt-out of this team by requesting a team-change in the forums.");
                                  flg = false;
                                  mp.setTitle("Recruit");
+                                 Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "manuadd " + mp.getName() + "red");
                                  Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "spawn " + mp.getName() + " red");
                               } else
                               {
