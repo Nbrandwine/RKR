@@ -12,10 +12,6 @@ commands:
     description: Basic command to RKR. Displays available commands.
     permission: rkr.use
     usage: /rkr
-  "rkr help":
-    description: Displays available time.
-    permission: rkr.use
-    usage: /rkr help
   "rkr set":
     description: Sets a flag for a team.
     permission: rkr.use
