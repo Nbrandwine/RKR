@@ -15,11 +15,11 @@ commands:
   "rkr help":
     description: Displays available time.
     permission: rkr.use
-    usage: /rkr
+    usage: /rkr help
   "rkr set":
     description: Sets a flag for a team.
     permission: rkr.use
-    usage: /rkr
+    usage: /rkr set
   "rkr hello":
     description: Debug command. Tests commands status.
     permission: rkr.use

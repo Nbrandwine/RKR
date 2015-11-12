@@ -40,19 +40,20 @@ public class CommandRKR implements CommandExecutor
 									}
 								return true;
 								}
-								else
-								{
-										// The command that basically says "You fucked up with your commands.".
-									p.sendMessage(ChatColor.DARK_AQUA + "-=====<" + ChatColor.AQUA + "Rival Kingdoms Reloaded" + ChatColor.DARK_AQUA + ">=====-");
-									p.sendMessage(ChatColor.AQUA + "" + ChatColor.DARK_AQUA + "Rival Kingdoms Reloaded");
-									p.sendMessage(ChatColor.AQUA + "" + ChatColor.DARK_AQUA + "Version 1.0 (DEV)");
-									p.sendMessage(ChatColor.AQUA + "" + ChatColor.DARK_AQUA + "Rival Kingdoms Reloaded is a plugin designed to provide infrastructure for the server.");
-									p.sendMessage(ChatColor.AQUA + "" + ChatColor.DARK_AQUA + "Developers");
-									p.sendMessage(ChatColor.AQUA + "- " + ChatColor.DARK_AQUA + "Stryker_");
-									p.sendMessage(ChatColor.AQUA + "- " + ChatColor.DARK_AQUA + "EUFlux");
-									p.sendMessage(ChatColor.AQUA + "- " + ChatColor.DARK_AQUA + "Zxios");
-									p.sendMessage(ChatColor.AQUA + "" + ChatColor.DARK_AQUA + "This plugin is for administrators only.");
-								return true; } }
+							 }
+							else
+							{
+									// The command that basically says "You fucked up with your commands.".
+								p.sendMessage(ChatColor.DARK_AQUA + "-=====<" + ChatColor.AQUA + "Rival Kingdoms Reloaded" + ChatColor.DARK_AQUA + ">=====-");
+								p.sendMessage(ChatColor.AQUA + "" + ChatColor.DARK_AQUA + "Rival Kingdoms Reloaded");
+								p.sendMessage(ChatColor.AQUA + "" + ChatColor.DARK_AQUA + "Version 1.0 (DEV)");
+								p.sendMessage(ChatColor.AQUA + "" + ChatColor.DARK_AQUA + "Rival Kingdoms Reloaded is a plugin designed to provide infrastructure for the server.");
+								p.sendMessage(ChatColor.AQUA + "" + ChatColor.DARK_AQUA + "Developers");
+								p.sendMessage(ChatColor.AQUA + "- " + ChatColor.DARK_AQUA + "Stryker_");
+								p.sendMessage(ChatColor.AQUA + "- " + ChatColor.DARK_AQUA + "EUFlux");
+								p.sendMessage(ChatColor.AQUA + "- " + ChatColor.DARK_AQUA + "Zxios");
+								p.sendMessage(ChatColor.AQUA + "" + ChatColor.DARK_AQUA + "This plugin is for administrators only.");
+							return true; }
 						}
 					}
 
