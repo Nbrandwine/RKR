@@ -1,16 +1,13 @@
-name: RKR
-version: 1.0.0
-description:
-author: Stryker_
-authors: [EUFlux]
-
-main: net.link404.nRKR.Main
-
-prefix: RKR
-
+ name: RKR
+ version: 1.0.0
+ description: Rival Kingdoms Reloaded Central Infrastructure Plugin
+ author: Stryker_
+ authors: [EUFlux, Zxios] 
+ 
+ main: net.link404.rkr.Main
+ database: false
+ 
  commands:
-   flagrate:
-     description: Set yourself on fire.
-     aliases: [combust_me, combustMe]
-     permission: inferno.flagrate
-     usage: Syntax error! Simply type /&lt;command&gt; to ignite yourself.
+   rkr:
+     description: Basic command to RKR.
+     permission: rkr.use

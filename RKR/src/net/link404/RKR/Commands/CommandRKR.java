@@ -33,6 +33,7 @@ public class CommandRKR implements CommandExecutor
 									// Communicate with PlatformConfigBuilder to determine <SQL/FF/YML>
 									// Collect command values from above, then talk to Platform<SQL/FF/YML>
 									// Store values and alert user of such actions.
+									p.sendMessage(ChatColor.GREEN + "Hello, " + p.getName() + "! You have reached 'rkr set'.");
 								}
 							}
 							else

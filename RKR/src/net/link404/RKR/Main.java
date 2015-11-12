@@ -1,4 +1,6 @@
 package net.link404.RKR;
+import net.link404.RKR.Commands.CommandRKR;
+
 import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.Plugin;
@@ -12,6 +14,7 @@ public class Main extends JavaPlugin
 	public void onEnable()
 	{
 		plugin = this;
+		this.getCommand("rkr").setExecutor(new CommandRKR());
 	}
 	
 	@Override
