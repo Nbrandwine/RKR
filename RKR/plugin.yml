@@ -4,7 +4,7 @@
  author: Stryker_
  authors: [EUFlux, Zxios] 
  
- main: net.link404.rkr.Main
+ main: net.link404.RKR.Main
  database: false
  
  commands:
