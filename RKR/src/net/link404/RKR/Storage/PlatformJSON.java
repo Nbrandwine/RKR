@@ -10,6 +10,10 @@ import org.bukkit.plugin.Plugin;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
+// Yell at Nick if you have JSON issues.
+// This is Nick.
+// Your errors are FALSE!
+
 public class PlatformJSON 
 {
 	private Plugin plugin = Main.getPlug();
