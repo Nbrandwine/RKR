@@ -1,6 +1,10 @@
 package net.link404.RKR.Commands;
  
+import net.link404.RKR.Storage.PlatformYML;
+
 import org.bukkit.ChatColor;
+import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -33,11 +37,88 @@ public class CommandRKR implements CommandExecutor
              {
                 if(p.hasPermission("rkr.set") || p.isOp())
                 {
-                 // TODO:
-                  // Communicate with PlatformConfigBuilder to determine <SQL/FF/YML>
-                  // Collect command values from above, then talk to Platform<SQL/FF/YML>
-                  // Store values and alert user of such actions.
-                  p.sendMessage(ChatColor.GREEN + "Hello, " + p.getName() + "! You have reached 'rkr set'.");
+                	// R k r:  <set>(0) <team>(1) <name>(2+=)
+                	if(args.length >= 2)
+                	{
+                    	Location lc = p.getLocation();
+                    	String Collection = "";
+                		PlatformYML sp = new PlatformYML();
+                		int qwe = 0;
+                		
+                		for(int i = 2; i < args.length; i++)
+                		{
+                			Collection = Collection + args[i] + " ";
+                		}
+                		
+                		Collection = Collection.replaceAll("\\s+$", "");
+                		
+                		String snv = args[2].toString();
+                		snv.substring(0, 3);
+                		
+                		String saveName = String.valueOf(snv + "_" + String.valueOf(lc.getBlockX()) + "-" +
+                				String.valueOf(lc.getBlockY()) + "-" + String.valueOf(lc.getBlockZ()));
+                		
+                		sp.setConfigName(saveName);
+                		
+                		if(args[1] == "RED")
+                		{
+                			p.getWorld().getBlockAt(lc).setType(Material.REDSTONE_BLOCK);
+                			qwe = 1;
+                    		
+                		} else if(args[1] == "BLUE")
+                		{
+                			p.getWorld().getBlockAt(lc).setType(Material.LAPIS_BLOCK);
+                			qwe = 2;
+                    		
+                		}else if(args[1] == "NEU")
+                		{
+                			p.getWorld().getBlockAt(lc).setType(Material.IRON_BLOCK);
+                			qwe = 3;
+                    		
+                		}
+                		else
+                		{
+                			qwe = 0;
+                			p.sendMessage(ChatColor.RED + "Failed to place block at position. Acceptable args are 'RED', 'BLUE', or 'NEU'.");
+                		}
+                		
+                		try{
+                			sp.setConfigName(saveName);
+                    		sp.setValue("Block.Properties.Team", args[1]);
+                    		sp.setValue("Block.Properties.Name", Collection);
+                    		sp.setValue("Block.Properties.Coordinates.X", String.valueOf(lc.getBlockX()) );
+                    		sp.setValue("Block.Properties.Coordinates.Y", String.valueOf(lc.getBlockY()) );
+                    		sp.setValue("Block.Properties.Coordinates.Z", String.valueOf(lc.getBlockZ()) );
+                    		
+                    		if(qwe == 1)
+                    			sp.setValue("Block.Properties.BlockType", "REDSTONE_BLOCK");
+                    			
+                    		if(qwe == 2)
+                    			sp.setValue("Block.Properties.BlockType", "LAPIS_BLOCK");
+                    			
+                    		if(qwe == 3)
+                    			sp.setValue("Block.Properties.BlockType", "IRON_BLOCK");
+                    			
+                    		p.sendMessage(ChatColor.GREEN + "Wrote X (" + String.valueOf(lc.getBlockX()) + "), Y ("
+                    				+ String.valueOf(lc.getBlockY()) + "), Z (" + String.valueOf(lc.getBlockZ()) 
+                    				+ "), Team (" + args[1] + "), and zone name (" + Collection + " to config (YML).\n\nPlaced block under you.");
+                    	
+                    
+                    		
+                    	return true; 
+                		}catch(Exception e)
+                		{
+                			System.out.println(e.getMessage());
+                		
+                			p.sendMessage(ChatColor.RED + "Failed to write to YML. Check config as well. \n\nError: " + e.getMessage());
+                		}
+      
+                	} else
+                	{
+                		p.sendMessage(ChatColor.RED + "Invalid argument count for /rkr set. \nCommand usage: /rkr set <TEAM> <NAME, CAN HAVE SPACES>");
+                	}
+                	
+                	
                 }
               return true;
               }

@@ -16,14 +16,14 @@ import org.json.simple.parser.JSONParser;
 
 public class PlatformJSON 
 {
-	private Plugin plugin = Main.getPlug();
+	private static Plugin plugin = Main.getPlug();
 	
-	public String pluginFolder = plugin.getDataFolder().getAbsolutePath();
+	public static String pluginFolder = plugin.getDataFolder().getAbsolutePath();
 	
 	/// WRITE AN INDEX TO A JSON PATH
 	/// PLEASE LABEL ALL WRITTEN JSON FILES WHEN APPLICABLE
 	@SuppressWarnings("unchecked") // Why do I feel like this is going to be a pain in the ass later?
-	public void writeJSON(String fileName, String subPath, String OBJECT, String VALUE)
+	public static void writeJSON(String fileName, String subPath, String OBJECT, String VALUE)
 	{
 		JSONObject jso = new JSONObject();
 		
@@ -50,7 +50,7 @@ public class PlatformJSON
 
 	/// READ AN INDEX TO A JSON PATH
 	//// ONLY READ FROM WRITTEN JSON FILES
-	public String parseJSON(String fileName, String subPath, String OBJECT)
+	public static String parseJSON(String fileName, String subPath, String OBJECT)
 	{
 		String v = null;
 		try
