@@ -5,6 +5,7 @@ import net.link404.RKR.Storage.PlatformYML;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -98,6 +99,8 @@ public class CommandRKR implements CommandExecutor
                     			
                     		if(qwe == 3)
                     			sp.setValue("Block.Properties.BlockType", "IRON_BLOCK");
+                    		
+                    		lc.getWorld().playSound(lc.add(0, -1, 0), Sound.ANVIL_LAND, 1, 1);//Sound feedback of block place
                     			
                     		p.sendMessage(ChatColor.GREEN + "Wrote X (" + String.valueOf(lc.getBlockX()) + "), Y ("
                     				+ String.valueOf(lc.getBlockY()) + "), Z (" + String.valueOf(lc.getBlockZ()) 
