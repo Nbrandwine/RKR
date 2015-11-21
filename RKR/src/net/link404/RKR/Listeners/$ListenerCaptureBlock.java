@@ -1,7 +1,5 @@
 package net.link404.RKR.Listeners;
 
-import net.link404.RKR.Storage.PlatformYML;
-
 import org.bukkit.Location;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
@@ -11,6 +9,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 
 import com.massivecraft.factions.entity.MPlayer;
+
+import net.link404.RKR.Storage.PlatformYML;
 
 public class $ListenerCaptureBlock implements Listener
 {

@@ -61,6 +61,17 @@ public class $ListenerTeamBalance implements Listener
                                  mp.setTitle("Recruit");
                                  Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "manuadd " + mp.getName() + "red");
                                  Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "spawn " + mp.getName() + " red");
+                              
+                                 for(Player adm: Bukkit.getOnlinePlayers())
+                                 {
+                                         if(adm.hasPermission("sck.teamnotify"))
+                                         {
+                                                 if(flg)
+                                                         adm.sendMessage(ChatColor.WHITE + "(Admin Message) A new player has joined and has been drafted. (" + p.getName() + " to " + mp.getFactionName() + ")");
+                        
+                                         }
+                                       
+                                 }
                               } else
                               {
                                       mp.setFaction(f1);
@@ -68,17 +79,19 @@ public class $ListenerTeamBalance implements Listener
                                        mp.setTitle("Recruit");
                                        Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "spawn " + mp.getName() + " red");
                                        flg = false;
+                                       
+                                       for(Player adm: Bukkit.getOnlinePlayers())
+                                       {
+                                               if(adm.hasPermission("sck.teamnotify"))
+                                               {
+                                                       if(flg)
+                                                               adm.sendMessage(ChatColor.WHITE + "(Admin Message) A new player has joined and has been drafted. (" + p.getName() + " to " + mp.getFactionName() + ")");
+                              
+                                               }
+                                               
+                                       }
                               }
                              
-                              for(Player adm: Bukkit.getOnlinePlayers())
-                              {
-                                      if(adm.hasPermission("sck.teamnotify"))
-                                      {
-                                              if(flg)
-                                                      adm.sendMessage(ChatColor.WHITE + "(Admin Message) A new player has joined and has been drafted. (" + p.getName() + " to " + mp.getFactionName() + ")");
-                     
-                                      }
-                              }
                              
                               for(Player ad: Bukkit.getOnlinePlayers())
                               { MPlayer x;
