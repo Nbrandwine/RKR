@@ -9,10 +9,12 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 
 import com.massivecraft.factions.entity.MPlayer;
 
-public class ScrollFire implements Listener
+public class ScrollDisease implements Listener
 {
 	@EventHandler
 	public void onPlayerUse(PlayerInteractEvent e)
@@ -25,8 +27,8 @@ public class ScrollFire implements Listener
 		    {
 				ItemMeta im = p.getInventory().getItemInHand().getItemMeta();
 				
-				p.sendMessage(ChatColor.GREEN + "You have invoked the powers of Azlios!");
-				if(im.getDisplayName().equalsIgnoreCase("Scroll of Azlios, God of Fire"))
+				p.sendMessage(ChatColor.GREEN + "You have invoked the powers of Colborn!");
+				if(im.getDisplayName().equalsIgnoreCase("Scroll of Colborn, the Plaguebringer"))
 				{
 					for(Player pl: Bukkit.getOnlinePlayers())
 					{
@@ -38,13 +40,15 @@ public class ScrollFire implements Listener
 							if(!(mp.getFactionName() == tp.getFactionName())) // 'mp' (other player) is not in same faction as 'tp' (Player)
 							{
 								mp.sendMessage(ChatColor.GREEN + "Enemy Player " + ChatColor.GOLD + p.getName() + " has invoked the powers of "
-										+ ChatColor.RED + "[Scroll of Azlios, God of Fire]" + ChatColor.GREEN + ", burning you and your teammates!");
-							
-								pl.setFireTicks(200);
+										+ ChatColor.RED + "[Scroll of Colborn, the Plaguebringer]" + ChatColor.GREEN + ", infesting your team!");
+								
+								  p.addPotionEffect(new PotionEffect(PotionEffectType.POISON, 280, 2));
+								  
 							} else
 							{
 								pl.sendMessage(ChatColor.GREEN + "Team Member " + ChatColor.GOLD + p.getName() + " has invoked the powers of "
-										+ ChatColor.RED + "[Scroll of Azlios, God of Fire]" + ChatColor.GREEN + ", burning enemy teammates!");
+										+ ChatColor.RED + "[Scroll of  Colborn, the Plaguebringer]" + ChatColor.GREEN + ", infecting the other team!");
+								
 							}
 						 
 						 

@@ -9,10 +9,13 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 
 import com.massivecraft.factions.entity.MPlayer;
 
-public class ScrollFire implements Listener
+// Gulbrand the Warrior
+public class ScrollWar implements Listener
 {
 	@EventHandler
 	public void onPlayerUse(PlayerInteractEvent e)
@@ -25,8 +28,8 @@ public class ScrollFire implements Listener
 		    {
 				ItemMeta im = p.getInventory().getItemInHand().getItemMeta();
 				
-				p.sendMessage(ChatColor.GREEN + "You have invoked the powers of Azlios!");
-				if(im.getDisplayName().equalsIgnoreCase("Scroll of Azlios, God of Fire"))
+				p.sendMessage(ChatColor.GREEN + "You have invoked the powers of Gulbrand!");
+				if(im.getDisplayName().equalsIgnoreCase("Scroll of  Gulbrand, the Warrior"))
 				{
 					for(Player pl: Bukkit.getOnlinePlayers())
 					{
@@ -38,13 +41,16 @@ public class ScrollFire implements Listener
 							if(!(mp.getFactionName() == tp.getFactionName())) // 'mp' (other player) is not in same faction as 'tp' (Player)
 							{
 								mp.sendMessage(ChatColor.GREEN + "Enemy Player " + ChatColor.GOLD + p.getName() + " has invoked the powers of "
-										+ ChatColor.RED + "[Scroll of Azlios, God of Fire]" + ChatColor.GREEN + ", burning you and your teammates!");
-							
-								pl.setFireTicks(200);
+										+ ChatColor.RED + "[Scroll of Gulbrand, the Warrior]" + ChatColor.GREEN + ", beserking their team!");
 							} else
 							{
 								pl.sendMessage(ChatColor.GREEN + "Team Member " + ChatColor.GOLD + p.getName() + " has invoked the powers of "
-										+ ChatColor.RED + "[Scroll of Azlios, God of Fire]" + ChatColor.GREEN + ", burning enemy teammates!");
+										+ ChatColor.RED + "[Scroll of  Gulbrand, the Warrior]" + ChatColor.GREEN + ", sending your team into a blind rage!");
+				
+								
+								  p.addPotionEffect(new PotionEffect(PotionEffectType.CONFUSION, 500, 1));
+								  p.addPotionEffect(new PotionEffect(PotionEffectType.INCREASE_DAMAGE, 300, 2));
+								
 							}
 						 
 						 

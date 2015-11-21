@@ -1,14 +1,14 @@
 package net.link404.RKR.Listeners;
 
-import org.bukkit.Location;
-import org.bukkit.block.Block;
-import org.bukkit.entity.Player;
+//import org.bukkit.Location;
+//import org.bukkit.block.Block;
+//import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 
-import com.massivecraft.factions.entity.MPlayer;
+//import com.massivecraft.factions.entity.MPlayer;
 
 import net.link404.RKR.Storage.PlatformYML;
 
@@ -19,11 +19,11 @@ public class $ListenerCaptureBlock implements Listener
 	{
 		PlatformYML cfg = new PlatformYML();
 		
-		Block b = e.getBlock();
-		Player p = e.getPlayer();
-		MPlayer mp = (MPlayer) p;
+		///Block b = e.getBlock();
+		///Player p = e.getPlayer();
+		///MPlayer mp = (MPlayer) p;
 		
-		Location lc = b.getLocation();
+		///Location lc = b.getLocation();
 		
 		cfg.getValue("", "");
 	}
