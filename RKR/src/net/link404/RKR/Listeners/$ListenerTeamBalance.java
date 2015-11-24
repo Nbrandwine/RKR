@@ -1,5 +1,7 @@
 package net.link404.RKR.Listeners;
 
+import net.link404.RKR.Storage.PlatformYML;
+
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -19,94 +21,70 @@ public class $ListenerTeamBalance implements Listener
       {
               Player p = e.getPlayer();
               MPlayer mp;
-             
               mp = MPlayer.get(p);
              
               Faction f1 = null;
               Faction f2 = null;
-              Faction ee = null;
-       
-              if(!e.getPlayer().hasPlayedBefore())
-              {
-                      if(mp.hasFaction() == false)
+              Faction ee = null;    
+              PlatformYML cfg = new PlatformYML();
+              
+  
+             if(mp.hasFaction() == false)
+             {                 
+                	  f1 = FactionColl.get().getByName("Red");
+                      f2 = FactionColl.get().getByName("Blue");
+                     
+                      Boolean flg;
+                     
+                      int a = 0; int b = 0;
+                      for(MPlayer mpl : f1.getMPlayers())
                       {
-                              f1 = FactionColl.get().getByName("Red");
-                              f2 = FactionColl.get().getByName("Blue");
-                             
-                              Boolean flg;
-                             
-                              int a = 0; int b = 0;
-                              for(MPlayer mpl : f1.getMPlayers())
-                              {
-                                      a++;
-                              }
-                              for(MPlayer mpl : f2.getMPlayers())
-                              {
-                                      b++;
-                              }
-                             
-                              if(a > b) // red > blue
-                              {
-                                      mp.setFaction(f2);
-                                      p.sendMessage(ChatColor.BLUE + "You have been drafted into blue team! You may opt-out of this team by requesting a team-change in the forums.");
-                                      mp.setTitle("Recruit");
-                                      Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "spawn " + mp.getName() + " blue");
-                                      Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "manuadd " + mp.getName() + "blue");
-                                      flg = true;
-                              } else if(b > a) // blue > red
-                              {
-                                 mp.setFaction(f1);
-                                 p.sendMessage(ChatColor.RED + "You have been drafted into red team! You may opt-out of this team by requesting a team-change in the forums.");
-                                 flg = false;
-                                 mp.setTitle("Recruit");
-                                 Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "manuadd " + mp.getName() + "red");
-                                 Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "spawn " + mp.getName() + " red");
-                              
-                                 for(Player adm: Bukkit.getOnlinePlayers())
-                                 {
-                                         if(adm.hasPermission("sck.teamnotify"))
-                                         {
-                                                 if(flg)
-                                                         adm.sendMessage(ChatColor.WHITE + "(Admin Message) A new player has joined and has been drafted. (" + p.getName() + " to " + mp.getFactionName() + ")");
-                        
-                                         }
-                                       
-                                 }
-                              } else
-                              {
-                                      mp.setFaction(f1);
-                                       p.sendMessage(ChatColor.RED + "You have been drafted into red team! You may opt-out of this team by requesting a team-change in the forums.");
-                                       mp.setTitle("Recruit");
-                                       Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "spawn " + mp.getName() + " red");
-                                       flg = false;
-                                       
-                                       for(Player adm: Bukkit.getOnlinePlayers())
-                                       {
-                                               if(adm.hasPermission("sck.teamnotify"))
-                                               {
-                                                       if(flg)
-                                                               adm.sendMessage(ChatColor.WHITE + "(Admin Message) A new player has joined and has been drafted. (" + p.getName() + " to " + mp.getFactionName() + ")");
-                              
-                                               }
-                                               
-                                       }
-                              }
-                             
-                             
-                              for(Player ad: Bukkit.getOnlinePlayers())
-                              { MPlayer x;
-                                x = MPlayer.get(ad);
-                             
-                                if(mp.getFaction() == x.getFaction())
-                                {
-                                        ad.sendMessage(ChatColor.GREEN + "! New Player " + ChatColor.LIGHT_PURPLE + p.getName() + ChatColor.GREEN + " has joined your team.");
-                                }
-                              }
-                             
+                              a++;
                       }
-              }
-               
-               
-               
-      }
+                      for(MPlayer mpl : f2.getMPlayers())
+                      {
+                              b++;
+                      }
+                      
+                      if(a > b) // red > blue
+                      {
+                              mp.setFaction(f2);
+                              p.sendMessage(ChatColor.BLUE + "You have been drafted into blue team! You may opt-out of this team by requesting a team-change on the website.");
+                              mp.setTitle("Draftee");
+                              Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "manuadd " + mp.getName() + " Blue");
+                              flg = true;
+                              
+                          	cfg.setValue("Player." + p.getName() + ".Joined", "true");
+                        	cfg.setValue("Player." + p.getName() + ".Team", "Blue");
+                        	cfg.save(cfg.getFileConfig());
+                        	
+                        	// IF Player joined RED, Alert RED Players
+                        	for(Player px : Bukkit.getOnlinePlayers())
+                        	{ MPlayer pxx = (MPlayer) px;
+                        		if(pxx.getFaction() == mp.getFaction())
+                        			px.sendMessage(ChatColor.GREEN + "Congratulations, " + ChatColor.RED + px.getName() + ChatColor.GREEN + " has joined your team!");
+                        	}
+                        	
+                      } else if(b > a) // blue > red
+                      {
+                         mp.setFaction(f1);
+                         p.sendMessage(ChatColor.RED + "You have been drafted into red team! You may opt-out of this team by requesting a team-change on the website.");
+                         flg = false;
+                         mp.setTitle("Draftee");
+                         Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "manuadd " + mp.getName() + " Red");
+                         
+                       	cfg.setValue("Player." + p.getName() + ".Joined", "true");
+                    	cfg.setValue("Player." + p.getName() + ".Team", "Blue");
+                    	cfg.save(cfg.getFileConfig());
+                    	
+                    	// IF Player joined BLUE Alert BLUE Players
+                    	for(Player px : Bukkit.getOnlinePlayers())
+                    	{ MPlayer pxx = (MPlayer) px;
+                    		if(pxx.getFaction() == mp.getFaction())
+                    			px.sendMessage(ChatColor.GREEN + "Congratulations, " + ChatColor.RED + px.getName() + ChatColor.GREEN + " has joined your team!");
+                    	}
+                      }
+                      
+             }
+        }
 }

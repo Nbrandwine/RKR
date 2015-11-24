@@ -10,14 +10,14 @@ import org.bukkit.event.block.BlockBreakEvent;
 
 //import com.massivecraft.factions.entity.MPlayer;
 
-import net.link404.RKR.Storage.PlatformYML;
+//import net.link404.RKR.Storage.PlatformYML;
 
 public class $ListenerCaptureBlock implements Listener
 {
 	@EventHandler(priority = EventPriority.HIGHEST)
 	public void onBlockBreak(BlockBreakEvent e)
 	{
-		PlatformYML cfg = new PlatformYML();
+		///PlatformYML cfg = new PlatformYML();
 		
 		///Block b = e.getBlock();
 		///Player p = e.getPlayer();
@@ -25,6 +25,6 @@ public class $ListenerCaptureBlock implements Listener
 		
 		///Location lc = b.getLocation();
 		
-		cfg.getValue("", "");
+		
 	}
 }

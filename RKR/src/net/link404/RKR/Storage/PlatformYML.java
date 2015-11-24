@@ -26,6 +26,11 @@ public class PlatformYML
 		fileName = cfgName;
 	}
 	
+	public FileConfiguration getFileConfig()
+	{
+		return cfg;
+	}
+	
 	public void BuildFiles()
 	{
 		try
@@ -37,11 +42,11 @@ public class PlatformYML
 		}
 	}
 
-	public void saveCustom(FileConfiguration yConfig, File yFile)
+	public void save(FileConfiguration yConfig)
 	{
 		try
 		{
-			yConfig.save(yFile);
+			yConfig.save(cYml);
 		} catch (IOException e)
 		{
 			System.out.println(e.getMessage());
@@ -51,21 +56,22 @@ public class PlatformYML
 	public void setValue(String PATH, String VALUE)
 	{
 		cfg.set(PATH, VALUE);
-		saveCustom(cfg, cYml);
+		save(cfg);
 	}
 	public void setValue(String PATH, int VALUE)
 	{
 		cfg.set(PATH, VALUE);
-		saveCustom(cfg, cYml);
+		save(cfg);
 	}
 	
-	public void getValue(String PATH, String VALUE)
+	public int getValueInt(String PATH)
 	{
-		cfg.getString(PATH);
+		return cfg.getInt(PATH);
 	}
-	public void getValue(String PATH, int VALUE)
+	
+	public String getValueStr(String PATH)
 	{
-		cfg.getInt(PATH);
+		return cfg.getString(PATH);
 	}
 	
 }

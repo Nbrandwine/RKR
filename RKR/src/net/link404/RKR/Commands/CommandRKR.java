@@ -56,10 +56,12 @@ public class CommandRKR implements CommandExecutor
                 		String snv = args[2].toString();
                 		snv.substring(0, 3);
                 		
+                		
+                		// deprecated 
                 		String saveName = String.valueOf(snv + "_" + String.valueOf(lc.getBlockX()) + "-" +
                 				String.valueOf(lc.getBlockY()) + "-" + String.valueOf(lc.getBlockZ()));
                 		
-                		sp.setConfigName(saveName);
+                		sp.setConfigName("blockList");
                 		
                 		if(args[1] == "RED")
                 		{
@@ -84,28 +86,28 @@ public class CommandRKR implements CommandExecutor
                 		}
                 		
                 		try{
-                			sp.setConfigName(saveName);
-                    		sp.setValue("Block.Properties.Team", args[1]);
-                    		sp.setValue("Block.Properties.Name", Collection);
-                    		sp.setValue("Block.Properties.Coordinates.X", String.valueOf(lc.getBlockX()) );
-                    		sp.setValue("Block.Properties.Coordinates.Y", String.valueOf(lc.getBlockY()) );
-                    		sp.setValue("Block.Properties.Coordinates.Z", String.valueOf(lc.getBlockZ()) );
+                			sp.setConfigName("blockList");
+                    		sp.setValue("Block." + lc.getBlockX() + lc.getBlockY() + lc.getBlockZ() + "Properties.Team", args[1]);
+                    		sp.setValue("Block." + lc.getBlockX() + lc.getBlockY() + lc.getBlockZ() + "Properties.Name", Collection);
+                    		sp.setValue("Block." + lc.getBlockX() + lc.getBlockY() + lc.getBlockZ() + "Properties.Coordinates.X", String.valueOf(lc.getBlockX()) );
+                    		sp.setValue("Block." + lc.getBlockX() + lc.getBlockY() + lc.getBlockZ() + "Properties.Coordinates.Y", String.valueOf(lc.getBlockY()) );
+                    		sp.setValue("Block." + lc.getBlockX() + lc.getBlockY() + lc.getBlockZ() + "Properties.Coordinates.Z", String.valueOf(lc.getBlockZ()) );
                     		
                     		if(qwe == 1)
-                    			sp.setValue("Block.Properties.BlockType", "REDSTONE_BLOCK");
+                    			sp.setValue("Block." + lc.getBlockX() + lc.getBlockY() + lc.getBlockZ() + "Properties.BlockType", "REDSTONE_BLOCK");
                     			
                     		if(qwe == 2)
-                    			sp.setValue("Block.Properties.BlockType", "LAPIS_BLOCK");
+                    			sp.setValue("Block." + lc.getBlockX() + lc.getBlockY() + lc.getBlockZ() + "Properties.BlockType", "LAPIS_BLOCK");
                     			
                     		if(qwe == 3)
-                    			sp.setValue("Block.Properties.BlockType", "IRON_BLOCK");
+                    			sp.setValue("Block." + lc.getBlockX() + lc.getBlockY() + lc.getBlockZ() + "Properties.BlockType", "IRON_BLOCK");
                     		
                     		lc.getWorld().playSound(lc.add(0, -1, 0), Sound.ANVIL_LAND, 1, 1);//Sound feedback of block place
                     			
                     		p.sendMessage(ChatColor.GREEN + "Wrote X (" + String.valueOf(lc.getBlockX()) + "), Y ("
                     				+ String.valueOf(lc.getBlockY()) + "), Z (" + String.valueOf(lc.getBlockZ()) 
-                    				+ "), Team (" + args[1] + "), and zone name (" + Collection + " to config (YML).\n\nPlaced block under you.");
-                    	
+                    				+ "), Team (" + args[1] + "), and zone name (" + Collection + " to config (YML) of " + saveName);
+                    
                     
                     		
                     	return true; 
