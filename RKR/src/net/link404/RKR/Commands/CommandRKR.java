@@ -2,6 +2,7 @@ package net.link404.RKR.Commands;
  
 import net.link404.RKR.Storage.PlatformYML;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -63,38 +64,35 @@ public class CommandRKR implements CommandExecutor
                 		
                 		sp.setConfigName("blockList");
                 		
-                		if(args[1] == "RED")
+                		if(args[1].equalsIgnoreCase("RED"))
                 		{
                 			p.getWorld().getBlockAt(lc).setType(Material.REDSTONE_BLOCK);
-                			qwe = 1;
                     		
-                		} else if(args[1] == "BLUE")
+                		} else if(args[1].equalsIgnoreCase("BLUE"))
                 		{
                 			p.getWorld().getBlockAt(lc).setType(Material.LAPIS_BLOCK);
-                			qwe = 2;
                     		
-                		}else if(args[1] == "NEU")
+                		}else if(args[1].equalsIgnoreCase("NEU"))
                 		{
                 			p.getWorld().getBlockAt(lc).setType(Material.IRON_BLOCK);
-                			qwe = 3;
                     		
                 		}
                 		else
                 		{
-                			qwe = 0;
-                			p.sendMessage(ChatColor.RED + "Failed to place block at position. Acceptable args are 'RED', 'BLUE', or 'NEU'.");
+                			p.sendMessage(ChatColor.RED + "Failed to place block at position. Acceptable args are 'RED', 'BLUE', or 'NEU'. You entered: " + args[1] + ", " + qwe);
                 		}
                 		
                 		try{
                 			sp.setConfigName("blockList");
-                    		sp.setValue("Block." + lc.getBlockX() + lc.getBlockY() + lc.getBlockZ() + "Properties.Team", args[1]);
-                    		sp.setValue("Block." + lc.getBlockX() + lc.getBlockY() + lc.getBlockZ() + "Properties.Name", Collection);
-                    		sp.setValue("Block." + lc.getBlockX() + lc.getBlockY() + lc.getBlockZ() + "Properties.Coordinates.X", String.valueOf(lc.getBlockX()) );
-                    		sp.setValue("Block." + lc.getBlockX() + lc.getBlockY() + lc.getBlockZ() + "Properties.Coordinates.Y", String.valueOf(lc.getBlockY()) );
-                    		sp.setValue("Block." + lc.getBlockX() + lc.getBlockY() + lc.getBlockZ() + "Properties.Coordinates.Z", String.valueOf(lc.getBlockZ()) );
+                    		sp.setValue("Block." + lc.getBlockX() + lc.getBlockY() + lc.getBlockZ() + ".Properties.Team", args[1]);
+                    		sp.setValue("Block." + lc.getBlockX() + lc.getBlockY() + lc.getBlockZ() + ".Properties.Name", Collection);
+                    		sp.setValue("Block." + lc.getBlockX() + lc.getBlockY() + lc.getBlockZ() + ".Properties.Coordinates.X", String.valueOf(lc.getBlockX()) );
+                    		sp.setValue("Block." + lc.getBlockX() + lc.getBlockY() + lc.getBlockZ() + ".Properties.Coordinates.Y", String.valueOf(lc.getBlockY()) );
+                    		sp.setValue("Block." + lc.getBlockX() + lc.getBlockY() + lc.getBlockZ() + ".Properties.Coordinates.Z", String.valueOf(lc.getBlockZ()) );
                     		
                     		if(qwe == 1)
                     			sp.setValue("Block." + lc.getBlockX() + lc.getBlockY() + lc.getBlockZ() + "Properties.BlockType", "REDSTONE_BLOCK");
+                    			
                     			
                     		if(qwe == 2)
                     			sp.setValue("Block." + lc.getBlockX() + lc.getBlockY() + lc.getBlockZ() + "Properties.BlockType", "LAPIS_BLOCK");
@@ -102,7 +100,7 @@ public class CommandRKR implements CommandExecutor
                     		if(qwe == 3)
                     			sp.setValue("Block." + lc.getBlockX() + lc.getBlockY() + lc.getBlockZ() + "Properties.BlockType", "IRON_BLOCK");
                     		
-                    		lc.getWorld().playSound(lc.add(0, -1, 0), Sound.ANVIL_LAND, 1, 1);//Sound feedback of block place
+                    		lc.getWorld().playSound(lc.add(0, -1, 0), Sound.ANVIL_LAND, 1, 1); // Sound feedback of block place
                     			
                     		p.sendMessage(ChatColor.GREEN + "Wrote X (" + String.valueOf(lc.getBlockX()) + "), Y ("
                     				+ String.valueOf(lc.getBlockY()) + "), Z (" + String.valueOf(lc.getBlockZ()) 
@@ -133,13 +131,12 @@ public class CommandRKR implements CommandExecutor
             // The command that basically says "You fucked up with your commands.".
                p.sendMessage(ChatColor.DARK_AQUA + "-=====<" + ChatColor.AQUA + "Rival Kingdoms Reloaded" + ChatColor.DARK_AQUA + ">=====-");
                p.sendMessage(ChatColor.AQUA + "" + ChatColor.DARK_AQUA + "Rival Kingdoms Reloaded");
-               p.sendMessage(ChatColor.AQUA + "" + ChatColor.DARK_AQUA + "Version 1.0 (DEV)");
-               p.sendMessage(ChatColor.AQUA + "" + ChatColor.DARK_AQUA + "Rival Kingdoms Reloaded is a plugin designed to provide infrastructure for the server.");
-               p.sendMessage(ChatColor.AQUA + "" + ChatColor.DARK_AQUA + "Developers");
+               p.sendMessage(ChatColor.AQUA + "" + ChatColor.DARK_AQUA + "Version 1.1 (DEV)");
+               p.sendMessage(ChatColor.AQUA + "" + ChatColor.DARK_AQUA + "Rival Kingdoms Reloaded (RKR) is a plugin designed to provide infrastructure for gameplay.");
+               p.sendMessage(ChatColor.AQUA + "" + ChatColor.DARK_AQUA + "Developers:");
                p.sendMessage(ChatColor.AQUA + "- " + ChatColor.DARK_AQUA + "Stryker_");
                p.sendMessage(ChatColor.AQUA + "- " + ChatColor.DARK_AQUA + "EUFlux");
-               p.sendMessage(ChatColor.AQUA + "- " + ChatColor.DARK_AQUA + "Zxios");
-               p.sendMessage(ChatColor.AQUA + "" + ChatColor.DARK_AQUA + "This plugin is for administrators only.");
+               p.sendMessage(ChatColor.AQUA + "" + ChatColor.DARK_AQUA + "This plugin is for administrators only. Type /help rkr for commands.");
               return true; 
               }
             }
